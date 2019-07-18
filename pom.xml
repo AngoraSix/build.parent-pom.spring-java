@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.angorasix</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
     <name>parent-pom</name>
     <description>Angora Six Parent Pom for Java+Spring Projects</description>
     <packaging>pom</packaging>
@@ -73,6 +73,54 @@
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <!-- Code Coverage - JaCoCo -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-coverage.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>CLASS</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${jacoco-coverage.class.line.min}</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>BRANCH</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${jacoco-coverage.class.branch.min}</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                            <excludes>
+                                <exclude>**/model/*.class</exclude>
+                                <exclude>**/model/**/*.class</exclude>
+                                <exclude>**/domain/*.class</exclude>
+                                <exclude>**/domain/**/*.class</exclude>
+                                <exclude>**/dto/*.class</exclude>
+                                <exclude>**/dto/**/*.class</exclude>
+                                <exclude>**/*Application.class</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <!-- Checkstyle -->
             <plugin>
@@ -302,5 +350,9 @@
         <maven.checkstyle.version>3.1.0</maven.checkstyle.version>
         <maven.pmd.version>3.12.0</maven.pmd.version>
         <maven.spotbugs.version>3.1.12</maven.spotbugs.version>
+        <jacoco-coverage.version>0.8.4</jacoco-coverage.version>
+
+        <jacoco-coverage.class.line.min>0.80</jacoco-coverage.class.line.min>
+        <jacoco-coverage.class.branch.min>0.80</jacoco-coverage.class.branch.min>
     </properties>
 </project>

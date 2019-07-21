@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.angorasix</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.6-SNAPSHOT</version>
     <name>parent-pom</name>
     <description>Angora Six Parent Pom for Java+Spring Projects</description>
     <packaging>pom</packaging>
@@ -287,8 +287,7 @@
             <activation>
                 <activeByDefault>false</activeByDefault>
                 <property>
-                    <name>docker</name>
-                    <value>latest</value>
+                    <name>docker-latest</name>
                 </property>
             </activation>
             <build>

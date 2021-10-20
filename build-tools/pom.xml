@@ -6,6 +6,6 @@
     <groupId>com.angorasix</groupId>
     <artifactId>build-tools</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>parent-pom build tools</name>
+    <name>parent-pom-build-tools</name>
     <description>Angora Six Parent Pom Build Tools containing resources</description>
 </project>

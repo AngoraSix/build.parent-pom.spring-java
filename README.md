@@ -8,4 +8,3 @@
 
 ## Maven Profiles:
 * `integration` 
-* `swagger`

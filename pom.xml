@@ -123,7 +123,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven.checkstyle.version}</version>
+                <version>${maven.checkstyle.plugin.version}</version>
                 <configuration>
                     <configLocation>google_checks.xml</configLocation>
                     <encoding>UTF-8</encoding>
@@ -146,7 +146,7 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>9.0.1</version>
+                        <version>${maven.checkstyle.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -154,7 +154,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>${maven.pmd.version}</version>
+                <version>${maven.pmd.plugin.version}</version>
                 <configuration>
                     <failOnViolation>true</failOnViolation>
                     <printFailingErrors>true</printFailingErrors>
@@ -225,6 +225,16 @@
         </plugins>
     </build>
 
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>3.1.1</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <profiles>
         <profile>
             <id>integration</id>
@@ -269,8 +279,9 @@
         <java.version>13</java.version>
 
         <spring-cloud.version>2020.0.3</spring-cloud.version>
-        <maven.checkstyle.version>3.1.2</maven.checkstyle.version>
-        <maven.pmd.version>3.14.0</maven.pmd.version>
+        <maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
+        <maven.checkstyle.version>9.0.1</maven.checkstyle.version>
+        <maven.pmd.plugin.version>3.14.0</maven.pmd.plugin.version>
         <maven.spotbugs.version>4.3.0</maven.spotbugs.version>
         <jacoco-coverage.version>0.8.7</jacoco-coverage.version>
         <asciidoctor.version>2.2.1</asciidoctor.version>

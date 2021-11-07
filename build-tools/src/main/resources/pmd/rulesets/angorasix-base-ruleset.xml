@@ -11,9 +11,31 @@
     <rule ref="category/java/bestpractices.xml" />
     <rule ref="category/java/codestyle.xml">
         <exclude name="AtLeastOneConstructor" />
+        <exclude name="ShortVariable" />
+        <exclude name="OnlyOneReturn" />
     </rule>
-    <rule ref="category/java/design.xml" />
-    <rule ref="category/java/documentation.xml" />
+    <rule ref="category/java/codestyle.xml/LongVariable">
+        <properties>
+            <property name="minimum" value="25" />
+        </properties>
+    </rule>
+    <rule ref="category/java/design.xml">
+        <exclude name="LawOfDemeter" />
+        <exclude name="LoosePackageCoupling"/>
+    </rule>
+
+
+    <rule ref="category/java/documentation.xml">
+        <exclude name="CommentRequired" />
+        <exclude name="CommentSize" />
+    </rule>
+    <!-- We'll customize the CommentSize rule -->
+    <rule ref="category/java/documentation.xml/CommentSize">
+        <properties>
+            <property name="maxLines" value="10" />
+            <property name="maxLineLength" value="100" />
+        </properties>
+    </rule>
     <rule ref="category/java/errorprone.xml" />
     <rule ref="category/java/multithreading.xml" />
     <rule ref="category/java/performance.xml" />

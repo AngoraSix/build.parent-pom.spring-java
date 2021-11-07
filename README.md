@@ -5,3 +5,6 @@
 * With `deploy` goal, if docker is enabled, we build image(s) locally and push it
 
 `mvn clean package -Ddocker=latest`
+
+## Maven Profiles:
+* `integration` 

@@ -6,13 +6,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.2</version>
+        <version>3.0.0</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.angorasix</groupId>
     <artifactId>parent-pom-spring-java</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
-    <name>parent-pom</name>
+    <version>0.1.1-SNAPSHOT</version>
+    <name>parent-pom-spring-java</name>
     <description>Angora Six Parent Pom for Java+Spring Projects</description>
     <packaging>pom</packaging>
 
@@ -126,7 +126,6 @@
                 <version>${maven.checkstyle.plugin.version}</version>
                 <configuration>
                     <configLocation>google_checks.xml</configLocation>
-                    <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <failOnViolation>true</failOnViolation>
@@ -230,7 +229,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.3.0</version>
             </plugin>
         </plugins>
     </reporting>
@@ -276,9 +275,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>13</java.version>
+        <java.version>17</java.version>
 
-        <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <spring-cloud.version>2022.0.0</spring-cloud.version>
         <maven.checkstyle.plugin.version>3.2.0</maven.checkstyle.plugin.version>
         <maven.checkstyle.version>9.0.1</maven.checkstyle.version>
         <maven.pmd.plugin.version>3.14.0</maven.pmd.plugin.version>

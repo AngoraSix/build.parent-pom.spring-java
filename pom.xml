@@ -172,7 +172,7 @@
                 <dependencies>
                     <dependency>
                         <groupId>com.angorasix</groupId>
-                        <artifactId>build-tools</artifactId>
+                        <artifactId>spring-java-build-tools</artifactId>
                         <version>${project.version}</version>
                     </dependency>
                 </dependencies>

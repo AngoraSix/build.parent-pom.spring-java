@@ -3,18 +3,39 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.angorasix</groupId>
+  <artifactId>parent-pom-spring-java</artifactId>
+  <version>0.2.1</version>
+  <packaging>pom</packaging>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.1.2</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.angorasix</groupId>
-  <artifactId>parent-pom-spring-java</artifactId>
-  <version>0.2.0</version>
-  <name>parent-pom-spring-java</name>
-  <description>Angora Six Parent Pom for Java+Spring Projects</description>
-  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>17</java.version>
+
+    <spring-cloud.version>2022.0.3</spring-cloud.version>
+    <maven.checkstyle.plugin.version>3.2.0</maven.checkstyle.plugin.version>
+    <maven.checkstyle.version>9.0.1</maven.checkstyle.version>
+    <maven.pmd.plugin.version>3.20.0</maven.pmd.plugin.version>
+    <maven.spotbugs.version>4.7.3.3</maven.spotbugs.version>
+    <jacoco-coverage.version>0.8.7</jacoco-coverage.version>
+    <asciidoctor.version>2.2.1</asciidoctor.version>
+
+    <maven.source.version>3.3.0</maven.source.version>
+    <maven.javadoc.version>3.6.0</maven.javadoc.version>
+    <maven.gpg.version>3.1.0</maven.gpg.version>
+    <maven.nexus.version>1.6.13</maven.nexus.version>
+
+    <jacoco-coverage.class.line.min>0.80</jacoco-coverage.class.line.min>
+    <jacoco-coverage.class.branch.min>0.80</jacoco-coverage.class.branch.min>
+  </properties>
 
   <dependencies>
     <!-- Spring Actuator for /info /health ... -->
@@ -178,7 +199,7 @@
           <dependency>
             <groupId>com.angorasix</groupId>
             <artifactId>spring-java-build-tools</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -226,6 +247,45 @@
           </dependency>
         </dependencies>
       </plugin>
+      <!-- Maven publish - generate Javadocs and Source files for publishing artifact -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${maven.source.version}</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${maven.javadoc.version}</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Maven publish - main OSSRH setup -->
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>${maven.nexus.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -272,25 +332,75 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>ci-cd</id>
+      <build>
+        <plugins>
+          <!-- Maven Signing - For Maven publish artifact -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>${maven.gpg.version}</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <configuration>
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
   <modules>
     <module>build-tools</module>
   </modules>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>17</java.version>
+  <name>parent-pom-spring-java</name>
+  <description>Angora Six Parent Pom for Java+Spring Projects</description>
+  <url>https://angorasix.com</url>
 
-    <spring-cloud.version>2022.0.3</spring-cloud.version>
-    <maven.checkstyle.plugin.version>3.2.0</maven.checkstyle.plugin.version>
-    <maven.checkstyle.version>9.0.1</maven.checkstyle.version>
-    <maven.pmd.plugin.version>3.20.0</maven.pmd.plugin.version>
-    <maven.spotbugs.version>4.7.3.3</maven.spotbugs.version>
-    <jacoco-coverage.version>0.8.7</jacoco-coverage.version>
-    <asciidoctor.version>2.2.1</asciidoctor.version>
+  <licenses>
+    <license>
+      <name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
+      <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
-    <jacoco-coverage.class.line.min>0.80</jacoco-coverage.class.line.min>
-    <jacoco-coverage.class.branch.min>0.80</jacoco-coverage.class.branch.min>
-  </properties>
+  <developers>
+    <developer>
+      <name>Gerardo Roza</name>
+      <email>rozagerardo@gmail.com</email>
+      <organization>AngoraSix</organization>
+      <organizationUrl>https://angorasix.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <scm>
+    <connection>scm:git:git://github.com/AngoraSix/commons.core.git</connection>
+    <developerConnection>scm:git:ssh://github.com:AngoraSix/commons.core.git</developerConnection>
+    <url>https://github.com/AngoraSix/commons.core</url>
+  </scm>
 </project>

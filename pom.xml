@@ -6,13 +6,13 @@
 
   <groupId>com.angorasix</groupId>
   <artifactId>parent-pom-spring-java</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.2</version>
   <packaging>pom</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.1.2</version>
+    <version>3.1.6</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -199,7 +199,7 @@
           <dependency>
             <groupId>com.angorasix</groupId>
             <artifactId>spring-java-build-tools</artifactId>
-            <version>0.2.1</version>
+            <version>0.2.2</version>
           </dependency>
         </dependencies>
       </plugin>

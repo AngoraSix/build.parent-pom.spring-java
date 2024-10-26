@@ -6,7 +6,7 @@
 
   <groupId>com.angorasix</groupId>
   <artifactId>parent-pom-spring-java</artifactId>
-  <version>0.2.2</version>
+  <version>0.2.3</version>
   <packaging>pom</packaging>
 
   <parent>
@@ -24,7 +24,7 @@
     <maven.checkstyle.plugin.version>3.2.0</maven.checkstyle.plugin.version>
     <maven.checkstyle.version>9.0.1</maven.checkstyle.version>
     <maven.pmd.plugin.version>3.20.0</maven.pmd.plugin.version>
-    <maven.spotbugs.version>4.7.3.3</maven.spotbugs.version>
+    <maven.spotbugs.version>4.8.6.3</maven.spotbugs.version>
     <jacoco-coverage.version>0.8.7</jacoco-coverage.version>
     <asciidoctor.version>2.2.1</asciidoctor.version>
 

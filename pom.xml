@@ -6,26 +6,26 @@
 
   <groupId>com.angorasix</groupId>
   <artifactId>parent-pom-spring-java</artifactId>
-  <version>0.2.3</version>
+  <version>0.3.0</version>
   <packaging>pom</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.1.6</version>
+    <version>3.4.3</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>17</java.version>
+    <java.version>21</java.version>
 
-    <spring-cloud.version>2022.0.3</spring-cloud.version>
+    <spring-cloud.version>2024.0.1</spring-cloud.version>
     <maven.checkstyle.plugin.version>3.2.0</maven.checkstyle.plugin.version>
     <maven.checkstyle.version>9.0.1</maven.checkstyle.version>
-    <maven.pmd.plugin.version>3.20.0</maven.pmd.plugin.version>
+    <maven.pmd.plugin.version>3.26.0</maven.pmd.plugin.version>
     <maven.spotbugs.version>4.8.6.3</maven.spotbugs.version>
-    <jacoco-coverage.version>0.8.7</jacoco-coverage.version>
+    <jacoco-coverage.version>0.8.11</jacoco-coverage.version>
     <asciidoctor.version>2.2.1</asciidoctor.version>
 
     <maven.source.version>3.3.0</maven.source.version>
@@ -199,7 +199,7 @@
           <dependency>
             <groupId>com.angorasix</groupId>
             <artifactId>spring-java-build-tools</artifactId>
-            <version>0.2.3</version>
+            <version>0.3.0</version>
           </dependency>
         </dependencies>
       </plugin>
